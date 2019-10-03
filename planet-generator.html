@@ -156,11 +156,12 @@
       <p>
         I like to think about texture arrays as working with a cube instead of a
         square. With a normal texture, you can refer to a pixel on it with (x,
-        y) coordinates. With a texture array you simply expand that to working
-        with (x, y, z) coordinates, where the z coordinate refers to the index
-        of which texture you would like to sample. Using this method allows you
-        to work with way more than just four textures at once, all in one shader
-        pass.
+        y) coordinates just like you would use to refer to a point on a square.
+        With a texture array you simply expand that to working with (x, y, z)
+        coordinates, where the z coordinate refers to the index of which texture
+        you would like to sample. This is the same way you would refer to a
+        point in a cube. Using this method allows you to work with way more than
+        just four textures at once, all in one shader pass.
       </p>
       <p>
         Once I had worked out texture arrays as the solution to my problem,
@@ -230,6 +231,100 @@
           biomes.
         </figcaption>
       </figure>
+      <h2>
+        3. Adding developer tools
+      </h2>
+      <p>
+        Making your code easy to work with is an extremely important part of
+        this entire process. Like I said in the beginning, a main goal of my
+        planet generator is that artists and developers should be able to
+        generate planets quickly without much under-the-hood knowledge.
+      </p>
+      <h3>The custom editor</h3>
+      <p>
+        I this by creating a custom editor for others (and myself) to use my
+        planet generator. It contains all possible parameters that can be
+        tweaked in the planet generation process, so you don't need to know how
+        to code in order to use it. Here's how it looks:
+      </p>
+      <figure class="centered">
+        <img src="Media/planet_generator_window.PNG" style="width: 70%" />
+        <figcaption>The planet generator wizard.</figcaption>
+      </figure>
+      <p>
+        Most of the information here is straight-forwards. The user inputs
+        information about the size of the planet, how many subdivisions it has,
+        etc. There is also an option to limit creation to a set number of
+        meshes, which is helpful if you want to test out some settings quickly
+        (huge planets with a grid size over 1024 will take a couple minutes to
+        generate).
+      </p>
+      <p>
+        The magic in this interface, however, happens in the Planet Generator
+        field.
+      </p>
+      <h3>The planet terrain generator</h3>
+      <p>
+        The planet terrain generator is what takes a boring quad sphere and
+        shapes its terrain using algorithms defined by the developer or artist.
+        It is the main component that makes a planet look like a planet. That
+        being said, it is relatively simple interface which can be easily
+        extended by any developer.
+      </p>
+      <p>
+        The terrain generator uses a two-pass system. The first pass goes
+        through every vertex of the quad sphere (looping through every
+        subdivision) and applies transformations based off of the developer's
+        specifications - generally based off of
+        <a href="https://en.wikipedia.org/wiki/Perlin_noise" target="_blank">
+          3D Perlin Noise</a
+        >.
+      </p>
+      <p>
+        The second pass goes through all of the new vertexes and adds texture
+        information to them. The second pass occurs after the vertex normals
+        have been computed, as this gives the developer extra information about
+        the landscape that can help influence the addition of texture. For
+        example, a normal which indicates a steep angle can be textured as a
+        cliff.
+      </p>
+      <p>
+        Using these two passes, terrain generators can use noise to create
+        uniform biomes accross a planet.
+      </p>
+      <figure class="centered">
+        <img src="Media/mountain_planet_generator.PNG" style="width: 70%" />
+        <figcaption>A uniform mountain terrain generator.</figcaption>
+      </figure>
+      <p>
+        For a more elaborate design, you can combine multiple terrain generators
+        which fade in between each other to create biomes, continents, and more.
+      </p>
+      <figure class="centered">
+        <img src="Media/biome_planet_generator.PNG" style="width: 70%" />
+        <figcaption>A biome terrain generator.</figcaption>
+      </figure>
+      <p>
+        Individual biomes themselves can be created using multiple terrain
+        generators.
+      </p>
+      <figure>
+        <img src="Media/highlands_biome.PNG" class="fill-width" />
+        <figcaption>
+          A highlands biome, created using a compound terrain generator. This
+          would look especially beautiful when populated with foliage and extra
+          details.
+        </figcaption>
+      </figure>
+      <p>
+        If you made it this far, thank you so much for reading my article!
+      </p>
+      <p>
+        One day I hope to release this planet generator either as a developer
+        tool or as a piece of a much larger game. Until then, feel free to
+        contact me using the link at the top of this site with any questions or
+        comments about planet generation.
+      </p>
     </main>
   </body>
 </html>
