@@ -8,7 +8,7 @@
   </head>
   <body>
     <nav class="menu content centered">
-      <ul>
+      <ul class="no-pad no-margin">
         <li id="title-name">Nick Pfister</li>
         <li>
           <a href="index.html">Portfolio</a>
@@ -24,7 +24,10 @@
     </nav>
     <main class="content">
       <h1>Planet Generator</h1>
-      <img class="fill-width" src="Media/planet_small.PNG" />
+      <figure>
+        <img class="fill-width" src="Media/planet_small.PNG" />
+        <figcaption>A randomly generated desert-mountain planet.</figcaption>
+      </figure>
       <p>
         I aimed to solve three problems when creating my Planet Generator:
       </p>
@@ -88,9 +91,145 @@
         by breaking down each side into any number of subdivisions (the larger
         the final product, the higher the subdivision count). Picture this as an
         inflated rubix cube, where each square represents one of the planet
-        meshes. Example:
+        meshes.
       </p>
-      <img class="fill-width" src="Media/subdivided_cube_sphere.PNG" />
+      <figure>
+        <img class="fill-width" src="Media/subdivided_cube_sphere.PNG" />
+        <figcaption>
+          A quad sphere with each side divided into four subdivisions. One
+          subdivision is shown removed for clarity.
+        </figcaption>
+      </figure>
+      <p>
+        Not only does this solve the issue of Unity's vertex limit, it opens the
+        door to several optimizations:
+      </p>
+      <ul>
+        <li>
+          Meshes can be loaded in chunks instead of all at once.
+        </li>
+        <li>
+          Distant meshes can be loaded as low-poly versions to save resources.
+        </li>
+        <li>
+          Meshes outside of the player's view don't need to be loaded at all.
+        </li>
+      </ul>
+      <p>
+        Likewise, these optimizations can be used to create huge game worlds in
+        which many players could co-exist. It could also be used to create
+        extremely rich singleplayer environments.
+      </p>
+      <figure>
+        <img class="fill-width" src="Media/subdivided_planet.PNG" />
+        <figcaption>
+          A fully rendered planet broken up into subdivisions.
+        </figcaption>
+      </figure>
+      <h2>2. Adding detail</h2>
+      <p>
+        Breaking up the mesh allows for a high level of terrain detail, but what
+        about textures?
+      </p>
+      <p>
+        From my own experimentation, I found that the maximum number of textures
+        Unity can process in one
+        <a href="https://docs.unity3d.com/Manual/SL-Pass.html" target="_blank"
+          >shader pass
+        </a>
+        is four. You can add more by using multiple passes or adding multiple
+        materials to a mesh, but this would compromise performance.
+      </p>
+      <p>
+        You could just stick to the limit of four, but that is quite limiting.
+        Just think about how many textures you can find if you step outside your
+        house and look around. To me, this is important in creating an immersive
+        experience. So after some time, I came up with a solution:
+        <a
+          href="https://docs.unity3d.com/Manual/SL-TextureArrays.html"
+          target="_blank"
+        >
+          texture arrays.
+        </a>
+      </p>
+      <h3>Working with texture arrays</h3>
+      <p>
+        I like to think about texture arrays as working with a cube instead of a
+        square. With a normal texture, you can refer to a pixel on it with (x,
+        y) coordinates. With a texture array you simply expand that to working
+        with (x, y, z) coordinates, where the z coordinate refers to the index
+        of which texture you would like to sample. Using this method allows you
+        to work with way more than just four textures at once, all in one shader
+        pass.
+      </p>
+      <p>
+        Once I had worked out texture arrays as the solution to my problem,
+        there was just one question left: how do you pass information about
+        terrain textures from a mesh to a shader?
+      </p>
+      <p>
+        There are many intricacies to this, but I will give a general outline of
+        the solution. In essence, I wanted to store information about what
+        textures are present in each vertex of a mesh and at what strength
+        (texture strengths matter when you are blending between multiple
+        textures - for example in between a beach and a field you might have 50%
+        grass and 50% sand).
+      </p>
+      <p>
+        Because I had no need for the
+        <a
+          href="https://docs.unity3d.com/ScriptReference/Mesh-uv2.html"
+          target="_blank"
+        >
+          UV2 coordinates
+        </a>
+        or the
+        <a
+          href="https://docs.unity3d.com/ScriptReference/Mesh-colors.html"
+          target="_blank"
+        >
+          color coordinates</a
+        >, I figured I could store the information here. So for each vertex of
+        the mesh, I plug in the index of the textures present in the UV2
+        coordinates (this is the "z" coordinate of the texture array which I
+        mentioned above) and the strength of the texture in the corresponding
+        color coordinate.
+      </p>
+      <figure class="centered">
+        <img src="Media/UV2_color_texture_diagram.png" style="width: 60%" />
+        <figcaption>
+          Texture indexes and strengths are stored per vertex in the UV2 and
+          color coordinates of a mesh. In this example only three textures are
+          needed, so the fourth index is discarded.
+        </figcaption>
+      </figure>
+      <p>
+        You might notice that this only allows four textures on a given vertex.
+        This does not mean that a mesh is limited to four - rather we can only
+        blend a total of four together on a given vertex. This is more than
+        enough, as I rarely find myself blending more than three at a time.
+      </p>
+      <p>
+        This solution also means that the interpolation of the UV2 coordinates
+        will cause unexpected consequences (a texture with index 3 adjacent to a
+        texture of index 5 will actually cause a texture of index 4 to show up
+        in between). This is solved by using a
+        <a
+          href="https://docs.microsoft.com/en-us/windows/win32/direct3dhlsl/dx-graphics-hlsl-struct"
+          target="_blank"
+        >
+          nointerpolation
+        </a>
+        keyword in your interpolator struct. This only works if you write your
+        own vertex and fragment shaders - not a Unity surface shader.
+      </p>
+      <figure>
+        <img src="Media/texture_blending.PNG" class="fill-width" />
+        <figcaption>
+          Vertex texturing and blending at the intersection of three different
+          biomes.
+        </figcaption>
+      </figure>
     </main>
   </body>
 </html>

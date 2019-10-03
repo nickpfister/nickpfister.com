@@ -13,8 +13,12 @@ h3 {
   color: white;
 }
 
-p a{
+p a {
   color: lightseagreen;
+}
+
+p a:hover {
+  text-decoration: none;
 }
 
 a {
@@ -34,9 +38,22 @@ body {
   line-height: 150%;
 }
 
-ul {
-  padding: 0;
-  margin: 0;
+figure {
+  margin: 0px;
+}
+
+figcaption {
+  text-align: center;
+  font-style: italic;
+  font-size: 16px;
+}
+
+.no-pad {
+  padding: 0px;
+}
+
+.no-margin {
+  margin: 0px;
 }
 
 .fill-width {
@@ -65,25 +82,26 @@ ul {
   margin: 0 auto 15px auto;
 }
 
-.tile-list figure{
+.tile-list figure {
   width: 100%;
   display: inline-block;
   margin: 0px;
   background-color: #aaa;
 }
 
-.tile-list img{
+.tile-list img {
   width: 100%;
   object-fit: cover;
 }
 
-.tile-list figure:hover{
+.tile-list figure:hover {
   background-color: white;
   color: black;
   text-decoration: underline;
 }
 
-.tile-list figcaption{
+.tile-list figcaption {
+  font-style: normal;
   font-weight: bold;
   height: 20px;
   line-height: 100%;
