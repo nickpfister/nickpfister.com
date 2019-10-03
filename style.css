@@ -39,30 +39,6 @@ ul {
   margin: 0;
 }
 
-figcaption {
-  font-weight: bold;
-  height: 20px;
-  line-height: 100%;
-}
-
-figure {
-  width: 100%;
-  display: inline-block;
-  margin: 0px;
-  background-color: #aaa;
-}
-
-figure img {
-  width: 100%;
-  object-fit: cover;
-}
-
-figure:hover {
-  background-color: white;
-  color: black;
-  text-decoration: underline;
-}
-
 .fill-width {
   width: 100%;
 }
@@ -87,6 +63,30 @@ figure:hover {
   display: block;
   width: 100%;
   margin: 0 auto 15px auto;
+}
+
+.tile-list figure{
+  width: 100%;
+  display: inline-block;
+  margin: 0px;
+  background-color: #aaa;
+}
+
+.tile-list img{
+  width: 100%;
+  object-fit: cover;
+}
+
+.tile-list figure:hover{
+  background-color: white;
+  color: black;
+  text-decoration: underline;
+}
+
+.tile-list figcaption{
+  font-weight: bold;
+  height: 20px;
+  line-height: 100%;
 }
 
 .tile {
