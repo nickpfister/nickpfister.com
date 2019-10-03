@@ -2,13 +2,19 @@
   box-sizing: border-box;
 }
 
-p{
+p {
   padding: 10px;
 }
 
-h1{
+h1,
+h2,
+h3 {
   text-align: center;
   color: white;
+}
+
+p a{
+  color: lightseagreen;
 }
 
 a {
@@ -34,20 +40,31 @@ ul {
 }
 
 figcaption {
-  background-color: #aaa;
   font-weight: bold;
   height: 20px;
+  line-height: 100%;
 }
 
 figure {
   width: 100%;
   display: inline-block;
   margin: 0px;
+  background-color: #aaa;
 }
 
 figure img {
   width: 100%;
   object-fit: cover;
+}
+
+figure:hover {
+  background-color: white;
+  color: black;
+  text-decoration: underline;
+}
+
+.fill-width {
+  width: 100%;
 }
 
 .content {
@@ -69,7 +86,7 @@ figure img {
   background-repeat: no-repeat;
   display: block;
   width: 100%;
-  margin: 0 auto 12px auto;
+  margin: 0 auto 15px auto;
 }
 
 .tile {
@@ -105,7 +122,7 @@ figure img {
     display: inline-block;
     height: 227px;
     width: 340px;
-    margin: 12px 7px;
+    margin: 12px 12px 40px 12px;
   }
 
   .tile {

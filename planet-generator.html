@@ -24,14 +24,73 @@
     </nav>
     <main class="content">
       <h1>Planet Generator</h1>
+      <img class="fill-width" src="Media/planet_small.PNG" />
       <p>
         I aimed to solve three problems when creating my Planet Generator:
-        <ol>
-         <li>Each planet must be large enough for many players to co-exist.</li> 
-         <li>They should have a high level of detail.</li> 
-         <li>Artists/developers must be able to generate planets quickly with little knowledge of the underlying architecture.</li> 
-        </ol>
       </p>
+      <ol>
+        <li>Each planet must be large enough for many players to co-exist.</li>
+        <li>They should have a high level of detail.</li>
+        <li>
+          Artists/developers must be able to generate planets quickly with
+          little knowledge of the underlying architecture.
+        </li>
+      </ol>
+      <h2>1. Creating large planet meshes</h2>
+      <p>
+        I define a large planet as being a size in which
+        <em>the player can hardly tell they are on a sphere.</em> In other
+        words, like being on earth, one could be convinced that they are
+        standing on a flat surface. In Unity, I have found that a planet with a
+        radius of 2000 units gets pretty close to this goal, assuming the player
+        stands at just under 2 units tall.
+      </p>
+      <p>
+        This would be no issue if I wanted to create a planet with little/no
+        details. However, referring to point 2 above, I want my planets to be
+        shaped with realistic-looking terrains. If I created one single
+        <a target="_blank" href="https://en.wikipedia.org/wiki/Polygon_mesh">
+          mesh
+        </a>
+        for the entire planet, the vertex count would be so high that it would
+        go above
+        <a
+          target="_blank"
+          href="https://forum.unity.com/threads/65535-vertices-limit.294585/"
+        >
+          Unity's maximum vertex count of 65535.
+        </a>
+        This would also make loading and rendering a planet very cumbersome, as
+        the entire object would have to be held in memory during runtime.
+      </p>
+      <h3>The solution</h3>
+      <p>
+        Before any terrain is shaped on the planets, I create a mesh in the form
+        of a
+        <a
+          target="_blank"
+          href="https://en.wikipedia.org/wiki/Quadrilateralized_spherical_cube"
+        >
+          quad sphere.
+        </a>
+        For the interested,
+        <a
+          target="_blank"
+          href="https://catlikecoding.com/unity/tutorials/cube-sphere/"
+        >
+          catlikecoding has a great tutorial
+        </a>
+        on procedurally creating a quad sphere in Unity.
+      </p>
+      <p>
+        Using a quad sphere as a base mesh, the problem of size is easy to
+        tackle. Instead of creating one single mesh, I generate the quad sphere
+        by breaking down each side into any number of subdivisions (the larger
+        the final product, the higher the subdivision count). Picture this as an
+        inflated rubix cube, where each square represents one of the planet
+        meshes.
+      </p>
+      <img class="fill-width" src="Media/subdivided_cube_sphere.PNG" />
     </main>
   </body>
 </html>
