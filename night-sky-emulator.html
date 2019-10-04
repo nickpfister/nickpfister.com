@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nick Pfister | Unity Developer</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <nav class="menu content centered">
+      <ul class="no-pad no-margin">
+        <li id="title-name">Nick Pfister</li>
+        <li>
+          <a href="index.html">Portfolio</a>
+        </li>
+        <li>Blog</li>
+        <li>
+          <a href="Resume.pdf" download>Resume</a>
+        </li>
+        <li>
+          <a href="mailto:me@nickpfister.com">Contact</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- If you change code outside of main, be sure to update it in every HTML file -->
+    <main class="content">
+      <h1>Night Sky Emulator</h1>
+
+      <figure>
+        <video controls autoplay muted loop class="fill-width">
+          <source src="Media/stargazer.mp4" type="video/mp4" />
+        </video>
+        <figcaption>
+          My night sky emulator being used to locate the constellation Lyra
+        </figcaption>
+      </figure>
+      <p>
+        This is a simple emulator which was originally built to be part of a
+        larger (unreleased) game. It represents all of the stars that we can see
+        from earth with the naked eye. This is done by using entries from the
+        <a target="_blank" href="http://www.astronexus.com/hyg">HYG Database</a>
+        to recreate each star programmatically with scientific accuracy. The
+        colors and
+        <a
+          target="_blank"
+          href="https://en.wikipedia.org/wiki/Magnitude_%28astronomy%29"
+        >
+          magnitudes
+        </a>
+        of each star match exactly what you will see in the night sky.
+      </p>
+      <figure>
+        <img src="Media/cancer_constellation.png" class="fill-width" />
+        <figcaption>
+          The Cancer constellation, defined using references to stars in the HYG
+          Database.
+        </figcaption>
+      </figure>
+
+      <p>
+        There were a few key functionalities that this provided:
+      </p>
+      <ul>
+        <li>
+          Each star can be easily referenced by it's characteristics (proper
+          name, magnitude, coordinates, or Bayer Designation).
+        </li>
+        <li>
+          The
+          <a
+            target="_blank"
+            href="https://en.wikipedia.org/wiki/Celestial_sphere"
+          >
+            celestial sphere
+          </a>
+          can be rotated to match how it would look at a certain location on
+          earth.
+        </li>
+        <li>
+          Custom particle system shaders cause the stars to fade as they
+          approach the horizon.
+        </li>
+      </ul>
+      <p>
+        As you can see from the pictures, this can easily be used to create
+        educational games or constellation finding apps. Or, if you love space
+        like me, you can simply spend hours scrolling through and looking at the
+        cosmos. This is especially helpful when you live in Los Angeles and
+        can't see the stars normally...
+      </p>
+      <figure>
+        <img src="Media/night_sky.png" class="fill-width" />
+        <figcaption>
+          A detailed shot centered around my favorite night sky object, the
+          <a target="_blank" href="https://en.wikipedia.org/wiki/Pleiades">
+            Pleiades Cluster
+          </a>
+        </figcaption>
+      </figure>
+    </main>
+    <!-- End of main -->
+  </body>
+</html>

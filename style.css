@@ -13,20 +13,21 @@ h3 {
   color: white;
 }
 
-p a {
-  color: lightseagreen;
-}
-
-p a:hover {
-  text-decoration: none;
-}
-
 a {
+  color: lightseagreen;
   text-decoration: none;
-  color: #aaa;
 }
 
 a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.menu a {
+  color: #aaa;
+}
+
+.menu a:hover {
   text-decoration: underline;
   color: white;
 }
