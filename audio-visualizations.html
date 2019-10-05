@@ -5,6 +5,12 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="UTF-8" />
+    <script>
+      var loc = window.location.href + "";
+      if (loc.indexOf("http://") == 0) {
+        window.location.href = loc.replace("http://", "https://");
+      }
+    </script>
   </head>
   <body>
     <nav class="menu content centered">
