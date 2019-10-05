@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nick Pfister | Unity Developer</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <nav class="menu content centered">
+      <ul class="no-pad no-margin">
+        <li id="title-name">Nick Pfister</li>
+        <li>
+          <a href="index.html">Portfolio</a>
+        </li>
+        <li>Blog</li>
+        <li>
+          <a href="Resume.pdf" download>Resume</a>
+        </li>
+        <li>
+          <a href="mailto:me@nickpfister.com">Contact</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- If you change code outside of main, be sure to update it in every HTML file -->
+    <main class="content">
+      <h1>Audio Visualizations</h1>
+      <figure>
+        <video controls class="fill-width">
+          <source src="Media/audio_graph.mp4" type="video/mp4" />
+        </video>
+        <figcaption>
+          A graph visualization of Winter from Vivaldi's Four Seasons. Make sure
+          your sound is on!
+        </figcaption>
+      </figure>
+      <p>
+        As a kid, I loved listening to my music on Windows Media Player.
+        Particularly, I enjoyed turning on the
+        <a
+          target="_blank"
+          href="https://support.microsoft.com/en-us/help/17878/visualizations-for-windows-media-player"
+        >
+          visualizer
+        </a>
+        and watching the animations go by. Years later, I realized I don't see
+        features like this on Spotify, so I went out to create my own solution.
+      </p>
+      <figure>
+        <video controls class="fill-width">
+          <source src="Media/audio_mesh.mp4" type="video/mp4" />
+        </video>
+        <figcaption>
+          3D visualizations produce a history of all frequencies over the last
+          few seconds. Notice the valleys representing the tempo of the song.
+        </figcaption>
+      </figure>
+      <p>
+        I knew it was possible to retrieve
+        <a
+          href="https://docs.unity3d.com/ScriptReference/AudioSource.GetSpectrumData.html"
+          target="_blank"
+        >
+          audio spectrum data in Unity</a
+        >, but this requires that the music is loaded into your project. I
+        wanted to visualize whatever is coming out of the sound card, so this
+        was insufficient.
+      </p>
+      <figure>
+        <img src="Media/audio_graph.png" class="fill-width" />
+        <figcaption>
+          This line graph responds to the peak frequencies of sound passing
+          through your computer.
+        </figcaption>
+      </figure>
+      <p>
+        After some research, I found a great open-source audio library called
+        <a href="https://github.com/filoe/cscore" target="_blank">
+          CSCore
+        </a>
+        which took care of most of my problems. I created a DLL of this library
+        and adapted several of it's functions for use in Unity. Then, I created
+        the graphical effects you see here. These are animated using data
+        produced from a
+        <a
+          href="https://en.wikipedia.org/wiki/Fast_Fourier_transform"
+          target="_blank"
+        >
+          fast fourier transform
+        </a>
+        of the audio coming out of your sound card.
+      </p>
+      <p>
+        Since this only depends on data from your sound card, it doesn't require
+        songs to be loaded into Unity. You can simply stream music on Spotify
+        with the visualizer open and watch what happens!
+      </p>
+      <figure>
+        <img src="Media/audio_mesh.png" class="fill-width" />
+        <figcaption>
+          Here I've opened an interface which allows you to tweak how the sound
+          data is processed. The range of frequencies being displayed is shown
+          in the bottom-left corner.
+        </figcaption>
+      </figure>
+    </main>
+    <!-- End of main -->
+  </body>
+</html>
