@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nick Pfister | Unity Developer</title>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <script>
+      var loc = window.location.href + "";
+      if (loc.indexOf("http://") == 0) {
+        window.location.href = loc.replace("http://", "https://");
+      }
+    </script>
+  </head>
+  <body>
+    <nav class="menu content centered">
+      <ul class="no-pad no-margin">
+        <li id="title-name">Nick Pfister</li>
+        <li>
+          <a href="../index.html">Portfolio</a>
+        </li>
+        <li>Blog</li>
+        <li>
+          <a href="../Resume.pdf" download>Resume</a>
+        </li>
+        <li>
+          <a href="mailto:me@nickpfister.com">Contact</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- If you change code outside of main, be sure to update it in every HTML file -->
+    <main class="content">
+      <h1>Dark Energy</h1>
+      <p class="centered">
+          <b>TECH: Unity3D, UNet, procedural generation </b>
+        </p>
+      <figure>
+        <video controls autoplay muted loop class="fill-width">
+          <source src="../Media/dark_energy.mp4" type="video/mp4" />
+        </video>
+        <figcaption>
+          A preview of the combat system in Dark Energy. The minimap gives an
+          example of what my random map generation engine produces.
+        </figcaption>
+      </figure>
+      <p>
+        Dark Energy was the first game I created with the intention of
+        releasing. It's extremely nostalgic for me and represents mountains of
+        learning as I transitioned from an academic programmer (creating mostly
+        data analysis programs for astronomy and physics labs) to a game
+        programmer.
+      </p>
+      <p>
+        The idea for this came from my love of action RPGs such as
+        <a href="https://www.torchlight2.com/en" target="_blank">
+          Torchlight
+        </a>
+        and
+        <a href="https://www.pathofexile.com/game" target="_blank">
+          Path of Exile.</a
+        >
+        The weapons system in Dark Energy was developed based on my infatuation
+        with the weapons system in the
+        <a href="https://borderlands.com/en-US/" target="_blank">
+          Borderlands
+        </a>
+        series.
+      </p>
+      <p>
+        Main features include:
+      </p>
+      <ul>
+        <li>
+          Randomized maze-like maps.
+        </li>
+        <li>
+          Procedurally generated weapons.
+        </li>
+        <li>
+          Local area gameplay using the old version (now deprecated) of UNet.
+        </li>
+      </ul>
+      <p>
+        One day I hope to go back and completely revamp Dark Energy with
+        everything I have learned. It was far from perfect, but it captured much
+        of the burning desire I had to create games since I was in elementary
+        school.
+      </p>
+    </main>
+    <!-- End of main -->
+  </body>
+</html>
