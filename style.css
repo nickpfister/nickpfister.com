@@ -75,6 +75,10 @@ figcaption {
   text-align: center;
 }
 
+.no-dot {
+  list-style-type: none;
+}
+
 .tile-list li {
   background-size: cover;
   background-repeat: no-repeat;

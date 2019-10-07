@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nick Pfister | Unity Developer</title>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <script>
+      var loc = window.location.href + "";
+      if (loc.indexOf("http://") == 0) {
+        window.location.href = loc.replace("http://", "https://");
+      }
+    </script>
+  </head>
+  <body>
+    <nav class="menu content centered">
+      <ul class="no-pad no-margin">
+        <li id="title-name">Nick Pfister</li>
+        <li>
+          <a href="../index.html">Portfolio</a>
+        </li>
+        <li>Blog</li>
+        <li>
+          <a href="../Resume.pdf" download>Resume</a>
+        </li>
+        <li>
+          <a href="mailto:me@nickpfister.com">Contact</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- If you change code outside of main, be sure to update it in every HTML file -->
+    <main class="content">
+      <h1>NOVASNAKE</h1>
+      <figure>
+        <video controls autoplay muted loop class="fill-width">
+          <source src="../Media/novasnake.mp4" type="video/mp4" />
+        </video>
+        <figcaption>
+          The official trailer for NOVASNAKE.
+        </figcaption>
+      </figure>
+      <p>
+        NOVASNAKE remains one of my favorite achievements. It is a spin on the
+        original snake/centipede games brought to life in 3D augmented reality.
+        I worked on this alongside two talented interns to create a game that I,
+        along with several others, just really wanted to play.
+      </p>
+      <figure>
+        <img src="../Media/novasnake.png" class="fill-width" />
+        <figcaption>
+          Playing NOVASNAKE at a park.
+        </figcaption>
+      </figure>
+      <p>
+        Though the concept of NOVASNAKE is relatively simple, there were several
+        difficult problems we needed to solve in order to make a 3D AR snake
+        game:
+      </p>
+      <ul>
+        <li>
+          Filtering out noise/turbulence caused by player movement and
+          imprecisions in AR tracking.
+        </li>
+        <li>
+          Easing players in to the unfamiliar feeling of collecting items in AR.
+        </li>
+        <li>
+          Collecting data on how players move in the real world while playing
+          our game.
+        </li>
+        <li>
+          Writing cross platform AR code (this was before Unity's AR
+          Foundations, so everything needed to be compatible with both ARKit and
+          ARCore).
+        </li>
+      </ul>
+      <p>
+        There were also a few non-AR related problems which NOVASNAKE tackled:
+      </p>
+      <ul>
+        <li>
+          Creating online and offline modes, and merging data when players moved
+          between them.
+        </li>
+        <li>
+          Creating an interface for developers to quickly add new abilities.
+        </li>
+        <li>
+          Adding rewarded advertisements which could be used to unlock new
+          skins.
+        </li>
+        <li>
+          Using Playfab to store player information and analytics.
+        </li>
+      </ul>
+
+      <p>
+        NOVASNAKE was my first game to be released on both Android and iOS and
+        make it beyond the testing phase. You can play it here:
+      </p>
+      <ul>
+          <li class="no-dot">
+              <a
+                href="https://apps.apple.com/us/app/novasnake/id1441855653"
+                target="_blank"
+              >
+                App Store
+              </a>
+            </li>
+        <li class="no-dot">
+          <a
+            href="https://play.google.com/store/apps/details?id=com.planetarygaming.novasnakear&hl=en_US"
+            target="_blank"
+          >
+            Google Play
+          </a>
+        </li>
+      </ul>
+      <figure class="centered">
+        <img src="../Media/novasnake_heart.png" style="width: 50%" />
+        <figcaption>&lt3</figcaption>
+      </figure>
+    </main>
+    <!-- End of main -->
+  </body>
+</html>
