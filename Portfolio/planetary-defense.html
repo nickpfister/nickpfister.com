@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nick Pfister | Unity Developer</title>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <script>
+      var loc = window.location.href + "";
+      if (loc.indexOf("http://") == 0) {
+        window.location.href = loc.replace("http://", "https://");
+      }
+    </script>
+  </head>
+  <body>
+    <nav class="menu content centered">
+      <ul class="no-pad no-margin">
+        <li id="title-name">Nick Pfister</li>
+        <li>
+          <a href="../index.html">Portfolio</a>
+        </li>
+        <li>Blog</li>
+        <li>
+          <a href="../Resume.pdf" download>Resume</a>
+        </li>
+        <li>
+          <a href="mailto:me@nickpfister.com">Contact</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- If you change code outside of main, be sure to update it in every HTML file -->
+    <main class="content">
+      <h1>Planetary Defense</h1>
+      <figure>
+        <video controls autoplay muted loop class="fill-width">
+          <source src="../Media/planetary defense.mp4" type="video/mp4" />
+        </video>
+        <figcaption>
+          Defending the earth from impending asteroids in AR.
+        </figcaption>
+      </figure>
+      <p>
+        Planetary Defense was the first AR title I released, and it was highly
+        experimental. That being said, I think it held up well and I personally
+        enjoy going back and playing it even today. This title had several
+        features which made it stand out:
+      </p>
+      <ul>
+        <li>
+          The player used their phone to "aim" and position their spaceship in
+          the world.
+        </li>
+        <li>
+          Synchronous multiplayer gameplay created with Photon Unity Networking
+          (PUN).
+        </li>
+        <li>
+          Rank and powerup systems encouraged players to keep playing and beat
+          their high-scores.
+        </li>
+      </ul>
+      <p>
+        Planetary Defense was developed with ARCore and released as a beta on
+        the Google Play Store. If you have an android phone, you can
+        <a
+          href="https://play.google.com/store/apps/details?id=com.planetarygaming.planetarydefensear&hl=en_US"
+          target="_blank"
+          >
+          download it here.
+          </a
+        >
+      </p>
+    </main>
+    <!-- End of main -->
+  </body>
+</html>
